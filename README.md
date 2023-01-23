@@ -10,7 +10,7 @@ The process for [setting up Session Manager](https://docs.aws.amazon.com/systems
 
 #### What does this module accomplish? 
 
-This Terraform module creates the required AWS resources to establish secure connection to an EC2 instance over HTTPS rather than SSH.  This solutions can be tailored and scaled to meet the needs of all organizational structures and sizes.  This module also gives teams the flexibility to house to interact with clients in a private subnet leverage VPC endpoints to interact with AWS Systems manager.  
+This Terraform module creates the required AWS resources to establish secure connection to an EC2 instance over HTTPS rather than SSH.  This solution can be tailored and scaled to meet the needs of all organizational structures and sizes.  This module also gives teams the flexibility to interact with clients in a private subnet leveraging VPC endpoints to interact with AWS Systems manager.  
 
 ### Steps for Deployment
 
@@ -45,7 +45,7 @@ tags = map(string)
 ### Enable settings for Session Manager in Systems Manager
 
 You can apply these settings either through the AWS console, or via Terraform: 
-* Option 1 (PREFERRED): You can configure your account settings for Session Manager through the AWS Console.  There are limitations to updating the preferrences in Terraform, so we recommend following the steps to complete this in the console. If leveraging the S3 bucket and CloudWatch log group created in this module, configure those portions of the preferences after deployment. 
+* Option 1 (PREFERRED): You can configure your account settings for Session Manager through the AWS Console.  There are limitations to updating the preferences in Terraform, so we recommend following the steps to complete this in the console. If leveraging the S3 bucket and CloudWatch log group created in this module, configure those portions of the preferences after deployment. 
 
 Enable settings through the console: 
 1. In the AWS Console, navigate to "AWS Systems Manager".
@@ -56,7 +56,7 @@ part of this Terraform template, you will need to perform this step after runnin
 5. Click "Save".
 
 * Option 2: Enable settings in Terraform: 
-- Add a new file to your repositry called `ssm-prefs.tf`. Add the following contents to that file, and follow the same steps as above to apply the changes to the environment.  If you follow this path, it is recommended that you lock down the ability of users to modify these settings in the console. 
+- Add a new file to your repository called `ssm-prefs.tf`. Add the following contents to that file, and follow the same steps as above to apply the changes to the environment.  If you follow this path, it is recommended that you lock down the ability of users to modify these settings in the console. 
 
 ```json
 resource "aws_ssm_document" "session_manager_prefs" {
@@ -93,7 +93,7 @@ DOC
 
 2. Once logged into the EC2 instance, type `echo "testing connection and logging capabilities of session manager"`. 
 3. Click "Terminate". 
-4. Navigate to the newly created log group and select the Log Stream that was created from the creation of a session. You can see the log metadata and the command above is loutlined in the log stream. 
+4. Navigate to the newly created log group and select the Log Stream that was created from the creation of a session. You can see the log metadata and the command above is outlined in the log stream. 
 5. Navigate to the newly created S3 Bucket. You can open that log file and see a similar pattern with the above command. 
 
 ## Security
